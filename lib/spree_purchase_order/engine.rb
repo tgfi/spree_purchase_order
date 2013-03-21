@@ -17,6 +17,12 @@ module SpreePurchaseOrder
       end
     end
 
+    config.after_initialize do |app|
+      app.config.spree.payment_methods += [
+        Spree::PaymentMethod::PurchaseOrder
+      ]
+    end
+
     config.to_prepare &method(:activate).to_proc
   end
 end

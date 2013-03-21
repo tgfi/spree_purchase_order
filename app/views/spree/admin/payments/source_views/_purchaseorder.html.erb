@@ -1,0 +1,26 @@
+<fieldset data-hook="purchase-order">
+  <legend><%= t(:purchase_order) %></legend>
+
+  <table class="index">
+    <tr>
+      <th colspan="6"><%= t(:po_details) %></th>
+    </tr>
+    <tr>
+      <td><%= label_tag nil, t(:po_number) %>:</td>
+      <td><%= payment.source.number %></td>
+      <td><%= label_tag nil, t(:purchase_order_pdf) %>:</td>
+      <td><%= link_to(payment.source.attachment.original_filename, payment.source.attachment.url) %></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= label_tag nil, t(:invoice_date) %>:</td>
+      <td><%= payment.source.invoice_date %></td>
+      <td><%= label_tag nil, t(:contact_name) %>:</td>
+      <td><%= payment.source.contact_name %></td>
+      <td><%= label_tag nil, t(:contact_email) %>:</td>
+      <td><%= mail_to(payment.source.contact_email) %></td>
+    </tr>
+  </table>
+</fieldset>
+
