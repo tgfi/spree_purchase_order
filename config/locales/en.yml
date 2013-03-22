@@ -2,8 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  po_details:    "P.O. Details"
-  po_number:     "P.O. Number"
-  invoice_date:  "Invoice Date"
+  po_details:    "Purchase Order Details"
+  po_number:     "Purchase Order Number"
+  invoice_date:  "Date to Invoice"
   contact_name:  "Contact Name"
   contact_email: "Contact Email"
+  upload_pdf:    "Upload PDF copy of the Purchase Order"

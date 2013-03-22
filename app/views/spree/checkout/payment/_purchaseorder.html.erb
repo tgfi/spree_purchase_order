@@ -1,10 +1,10 @@
 <h1>Purchase Order</h1>
 <p>
-  <%= label_tag nil, 'Purchase Order Number' %><span class="required">*</span><br />
+  <%= label_tag nil, t(:po_number) %><span class="required">*</span><br />
   <%= text_field_tag "payment_source[#{payment_method.id}][number]", '', :id => 'number' %>
 </p>
 <p>
-  <%= label_tag nil, 'Date to invoice' %><br />
+  <%= label_tag nil, t(:invoice_date) %><br />
   <%= text_field_tag "payment_source[#{payment_method.id}][invoice_date]", '', :id => 'invoice_date', :class => 'datepicker' %>
 </p>
 <p class='form_hint'>mm/dd/yyyy</p>
@@ -17,6 +17,6 @@
   <%= email_field_tag "payment_source[#{payment_method.id}][contact_email]", '', :id => 'contact_email'  %>
 </p>
 <p>
-  <%= label_tag nil, 'Upload PDF copy of the Purchase Order' %><br />
+  <%= label_tag nil, t(:upload_pdf) %><br />
   <%= file_field_tag "payment_source[#{payment_method.id}][attachment]", :id => 'po_attachment' %>
 </p>
