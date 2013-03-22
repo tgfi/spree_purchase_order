@@ -5,9 +5,8 @@
 </p>
 <p>
   <%= label_tag nil, t(:invoice_date) %><br />
-  <%= text_field_tag "payment_source[#{payment_method.id}][invoice_date]", '', :id => 'invoice_date', :class => 'datepicker' %>
+  <%= text_field_tag "payment_source[#{payment_method.id}][invoice_date]", '', :id => 'invoice_date', :placeholder => "mm/dd/yyyy" %>
 </p>
-<p class='form_hint'>mm/dd/yyyy</p>
 <p>
   <%= label_tag nil, t(:contact_name) %><span class="required">*</span><br />
   <%= text_field_tag "payment_source[#{payment_method.id}][contact_name]", '', :id => 'contact_name' %>
