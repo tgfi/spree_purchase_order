@@ -4,24 +4,26 @@
   <div class="row">
     <div class="alpha six columns">
       <dl>
-        <dt><%= t(:po_number) -%>:</dt>
-        <dd><%= payment.source.number -%></dd>
-        <dt><%= t(:purchase_order_pdf) -%>:</dt>
-        <dd><%= link_to(payment.source.attachment.original_filename, payment.source.attachment.url) %></dd>
-        <dt><%= t(:invoice_date) %>:</dt>
+        <dt><%= Spree.t(:order_number) %>:</dt>
+        <dd><%= payment.source.number %></dd>
+        <% if payment.source.attachment.present? %>
+          <dt><%= Spree.t(:order_pdf) %>:</dt>
+          <dd><%= link_to(payment.source.attachment.original_filename, payment.source.attachment.url) %></dd>
+        <% end %>
+        <dt><%= Spree.t(:invoice_date) %>:</dt>
         <dd><%= payment.source.invoice_date %></dd>
       </dl>
     </div>
 
     <div class="omega six columns">
       <dl>
-        <dt><%= t(:contact_name) %>:</dt>
+        <dt><%= Spree.t(:contact_name) %>:</dt>
         <dd><%= payment.source.contact_name %></dd>
-        <dt><%= t(:contact_email) %>:</dt>
+        <dt><%= Spree.t(:contact_email) %>:</dt>
         <dd><%= mail_to(payment.source.contact_email) %></dd>
       </dl>
     </div>
   </div>
 </fieldset>
 
-<p><%= payment.source.inspect %></p>
+<p><%#= payment.source.inspect %></p>

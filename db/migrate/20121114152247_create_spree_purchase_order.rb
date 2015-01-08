@@ -2,6 +2,8 @@ class CreateSpreePurchaseOrder < ActiveRecord::Migration
   def change
     create_table :spree_purchase_order_documents do |t|
       t.string :number
+      t.integer :payment_method_id
+      t.integer :user_id
       t.date   :invoice_date
       t.string :contact_name
       t.string :contact_email

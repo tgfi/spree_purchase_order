@@ -17,12 +17,17 @@ module SpreePurchaseOrder
       end
     end
 
-    config.after_initialize do |app|
-      app.config.spree.payment_methods += [
-        Spree::PaymentMethod::PurchaseOrder
-      ]
+    initializer "spree.register.payment_methods" do |app|
+      app.config.spree.payment_methods << Spree::PaymentMethod::PurchaseOrder
     end
 
-    config.to_prepare &method(:activate).to_proc
+    initializer "spree.set.payment_attributes.permitted_params" do |app|
+      Spree::PermittedAttributes.source_attributes << :invoice_date
+      Spree::PermittedAttributes.source_attributes << :contact_name
+      Spree::PermittedAttributes.source_attributes << :contact_email
+      Spree::PermittedAttributes.source_attributes << :upload_pdf
+    end
+
+    config.to_prepare(&method(:activate).to_proc)
   end
 end
