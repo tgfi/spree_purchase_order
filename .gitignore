@@ -12,3 +12,7 @@ nbproject
 pkg
 *.swp
 spec/dummy
+
+.ruby-version
+
+.ruby-gemset

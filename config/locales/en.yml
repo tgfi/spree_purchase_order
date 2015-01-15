@@ -2,11 +2,24 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  purchase_order:     "Purchase Order"
-  po_details:         "Purchase Order Details"
-  po_number:          "Purchase Order Number"
-  purchase_order_pdf: "Purchase Order PDF"
-  invoice_date:       "Date to Invoice"
-  contact_name:       "Contact Name"
-  contact_email:      "Contact Email"
-  upload_pdf:         "Upload PDF copy of the Purchase Order"
+  spree:
+    purchase_order_document: ""
+    purchase_order:     "Purchase Order"
+    po_details:         "Purchase Order Details"
+    po_number:          "Purchase Order Number"
+    order_number:       "Order Number"
+    order_pdf:          "Order PDF"
+    purchase_order_pdf: "Purchase Order PDF"
+    invoice_date:       "Date to Invoice"
+    contact_name:       "Contact Name"
+    contact_email:      "Contact Email"
+    upload_pdf:         "Upload PDF copy of the Purchase Order"
+  activerecord:
+    attributes:
+      spree/purchase_order_document:
+        purchase_order_pdf: "Purchase Order PDF"
+        invoice_date:       "Date to Invoice"
+        number:             "Purchase Order Number"
+        contact_name:       "Contact Name"
+        contact_email:      "Contact Email"
+        upload_pdf:         "Upload PDF copy of the Purchase Order"

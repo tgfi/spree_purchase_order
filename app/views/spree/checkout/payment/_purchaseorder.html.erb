@@ -1,21 +1,24 @@
+<% param_prefix = "payment_source[#{payment_method.id}]" %>
+
 <h1>Purchase Order</h1>
 <p>
-  <%= label_tag nil, t(:po_number) %><span class="required">*</span><br />
-  <%= text_field_tag "payment_source[#{payment_method.id}][number]", '', :id => 'number' %>
+  <%= label_tag nil, Spree.t(:po_number) %><span class="required">*</span><br />
+  <%= text_field_tag "#{param_prefix}[number]", '', :id => 'number' %>
 </p>
 <p>
-  <%= label_tag nil, t(:invoice_date) %><br />
-  <%= text_field_tag "payment_source[#{payment_method.id}][invoice_date]", '', :id => 'invoice_date', :placeholder => "mm/dd/yyyy" %>
+  <%#sadf%>
+  <%= label_tag nil, Spree.t(:invoice_date) %><br />
+  <%= text_field_tag "#{param_prefix}[invoice_date]", '', :id => 'invoice_date', :placeholder => "mm/dd/yyyy", class: "spree-date-field" %>
 </p>
 <p>
-  <%= label_tag nil, t(:contact_name) %><span class="required">*</span><br />
-  <%= text_field_tag "payment_source[#{payment_method.id}][contact_name]", '', :id => 'contact_name' %>
+  <%= label_tag nil, Spree.t(:contact_name) %><span class="required">*</span><br />
+  <%= text_field_tag "#{param_prefix}[contact_name]", '', :id => 'contact_name' %>
 </p>
 <p>
-  <%= label_tag nil, t(:contact_email) %><span class="required">*</span><br />
-  <%= email_field_tag "payment_source[#{payment_method.id}][contact_email]", '', :id => 'contact_email'  %>
+  <%= label_tag nil, Spree.t(:contact_email) %><span class="required">*</span><br />
+  <%= email_field_tag "#{param_prefix}[contact_email]", '', :id => 'contact_email'  %>
 </p>
 <p>
-  <%= label_tag nil, t(:upload_pdf) %><br />
-  <%= file_field_tag "payment_source[#{payment_method.id}][attachment]", :id => 'po_attachment' %>
+  <%= label_tag nil, Spree.t(:upload_pdf) %><br />
+  <%= file_field_tag "#{param_prefix}[attachment]", :id => 'po_attachment' %>
 </p>
