@@ -14,6 +14,7 @@ en:
     contact_name:       "Contact Name"
     contact_email:      "Contact Email"
     upload_pdf:         "Upload PDF copy of the Purchase Order"
+    use_new_cc_or_payment_method: Use new credit card / Purchase order
   activerecord:
     attributes:
       spree/purchase_order_document:
