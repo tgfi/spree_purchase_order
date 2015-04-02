@@ -6,21 +6,7 @@ module Spree
     end
 
     def actions
-      %w{void}
-    end
-
-    def authorize(money, credit_card, options = {})
-      ActiveMerchant::Billing::Response.new(true, 'Purchase Order: Success', {}, {})
-    end
-
-    # Indicates whether its possible to capture the payment
-    def can_capture?(payment)
-      false
-    end
-
-    # Indicates whether its possible to void the payment.
-    def can_void?(payment)
-      payment.state != 'void'
+      %w{capture void}
     end
 
     def cancel(response); end
@@ -29,8 +15,12 @@ module Spree
       ActiveMerchant::Billing::Response.new(true, "", {}, {})
     end
 
+    def capture(*args)
+      ActiveMerchant::Billing::Response.new(true, 'Purchase Order: Success', {}, {})
+    end
+
     def source_required?
-      true
+      false
     end
   end
 end
