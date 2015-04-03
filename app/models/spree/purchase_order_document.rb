@@ -2,6 +2,8 @@ module Spree
   class PurchaseOrderDocument < ActiveRecord::Base
     has_many :payments, :as => :source
     belongs_to :payment_method
+
+    delegate :actions, to: :payment_method
     # attr_accessible :number, :invoice_date, :contact_name, :contact_email, :attachment
 
     validates_presence_of :number,        :message => 'must be supplied.'
@@ -18,9 +20,24 @@ module Spree
     ALLOWED_CONTENT_TYPES = [ "application/pdf" ]
     ALLOWED_FILE_EXTENSIONS = [ "pdf" ]
 
-    private
+
+    def can_capture?(payment)
+      ['checkout', 'pending'].include?(payment.state)
+    end
+
+    # Indicates whether its possible to void the payment.
+    def can_void?(payment)
+      payment.state != 'void'
+    end
+
+    def source_required?
+      true
+    end
+
+  private
     def skip_thumbnail_creation
       return false if (ALLOWED_CONTENT_TYPES.include?(attachment_content_type))
     end
+
   end
 end

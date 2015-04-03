@@ -25,7 +25,7 @@ module SpreePurchaseOrder
       Spree::PermittedAttributes.source_attributes << :invoice_date
       Spree::PermittedAttributes.source_attributes << :contact_name
       Spree::PermittedAttributes.source_attributes << :contact_email
-      Spree::PermittedAttributes.source_attributes << :upload_pdf
+      Spree::PermittedAttributes.source_attributes << :attachment
     end
 
     config.to_prepare(&method(:activate).to_proc)
