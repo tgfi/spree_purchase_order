@@ -19,6 +19,10 @@ module Spree
       ActiveMerchant::Billing::Response.new(true, 'Purchase Order: Success', {}, {})
     end
 
+    def credit(*args)
+      ActiveMerchant::Billing::Response.new(true, 'Purchase Order: Success', {}, {})
+    end
+
     def authorize(money, purchase_order_instance, options = {})
       ActiveMerchant::Billing::Response.new(true, 'Purchase Order: Success', {}, {})
     end
@@ -29,6 +33,10 @@ module Spree
 
     # Indicates whether its possible to void the payment.
     def can_void?(payment)
+      !payment.state.in?(['void', 'invalid', 'failed'])
+    end
+
+    def  can_credit?(payment)
       !payment.state.in?(['void', 'invalid', 'failed'])
     end
 
