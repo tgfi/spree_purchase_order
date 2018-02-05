@@ -16,7 +16,9 @@ module Spree
                                             :invoice_date  => invoice_date,
                                             :contact_name  => payment_parameters[:contact_name],
                                             :contact_email => payment_parameters[:contact_email],
-                                            :attachment    => payment_parameters[:attachment]
+                                            :attachment    => payment_parameters[:attachment],
+                                            :tax_exempt    => payment_parameters[:tax_exempt],
+                                            :tax_id_number => payment_parameters[:tax_id_number]
           )
 
       end

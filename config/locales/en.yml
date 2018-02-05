@@ -14,6 +14,9 @@ en:
     contact_name:       "Contact Name"
     contact_email:      "Contact Email"
     upload_pdf:         "Upload PDF copy of the Purchase Order"
+    use_new_cc_or_payment_method: Use new credit card / Purchase order
+    are_you_tax_exempt: "Are you tax exempt?"
+    tax_id_number: "Tax ID/EIN Number"
   activerecord:
     attributes:
       spree/purchase_order_document:
@@ -23,3 +26,5 @@ en:
         contact_name:       "Contact Name"
         contact_email:      "Contact Email"
         upload_pdf:         "Upload PDF copy of the Purchase Order"
+        are_you_tax_exempt: "Are you tax exempt?"
+        tax_id_number:      "Tax ID/EIN Number"

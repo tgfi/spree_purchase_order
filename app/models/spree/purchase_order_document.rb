@@ -8,6 +8,8 @@ module Spree
     validates_presence_of :number,        :message => 'must be supplied.'
     validates_presence_of :contact_name,  :message => "can't be blank."
     validates_format_of   :contact_email, :with    => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+    validates_inclusion_of :tax_exempt, in: [true, false]
+    validates_presence_of :tax_id_number, if: proc { |pod| pod.tax_exempt? }
 
     has_attached_file :attachment,
                       :url  => "purchase_orders/:id/:basename.:extension",

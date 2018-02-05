@@ -1,22 +1,37 @@
 <% param_prefix = "payment_source[#{payment_method.id}]" %>
-
+<% payment_source_params = params[:order].try(:[], :payments_attributes) %>
+<%
+if payment_source_params.present?
+  payment_source_params = payment_source_params.detect { |p| p[:payment_method_id].to_i == payment_method.id }.try(:[], :source_attributes)
+end
+%>
 <h1>Purchase Order</h1>
 <p>
+  <%= label_tag nil, Spree.t(:are_you_tax_exempt) %><span class="required">*</span><br />
+  <label style="margin-right: 1em;"><%= radio_button_tag "#{param_prefix}[tax_exempt]", 1, ![false, 0, "false", "0",nil].include?(payment_source_params.try(:[], :tax_exempt)), value: true %> Yes</label>
+  <label><%= radio_button_tag "#{param_prefix}[tax_exempt]", 0, [false, 0, "false", "0",nil].include?(payment_source_params.try(:[], :tax_exempt)), value: false %> No</label>
+</p>
+<p>
+  <%= label_tag nil, Spree.t(:tax_id_number) %><br />
+  <%= text_field_tag "#{param_prefix}[tax_id_number]", payment_source_params.try(:[], :tax_id_number), :id => 'tax_id_number' %>
+</p>
+
+<p>
   <%= label_tag nil, Spree.t(:po_number) %><span class="required">*</span><br />
-  <%= text_field_tag "#{param_prefix}[number]", '', :id => 'number' %>
+  <%= text_field_tag "#{param_prefix}[number]", payment_source_params.try(:[], :number), :id => 'number' %>
 </p>
 <p>
   <%#sadf%>
   <%= label_tag nil, Spree.t(:invoice_date) %><br />
-  <%= text_field_tag "#{param_prefix}[invoice_date]", '', :id => 'invoice_date', :placeholder => "mm/dd/yyyy", class: "spree-date-field" %>
+  <%= text_field_tag "#{param_prefix}[invoice_date]", payment_source_params.try(:[], :invoice_date), :id => 'invoice_date', :placeholder => "mm/dd/yyyy", class: "spree-date-field" %>
 </p>
 <p>
   <%= label_tag nil, Spree.t(:contact_name) %><span class="required">*</span><br />
-  <%= text_field_tag "#{param_prefix}[contact_name]", '', :id => 'contact_name' %>
+  <%= text_field_tag "#{param_prefix}[contact_name]", payment_source_params.try(:[], :contact_name), :id => 'contact_name' %>
 </p>
 <p>
   <%= label_tag nil, Spree.t(:contact_email) %><span class="required">*</span><br />
-  <%= email_field_tag "#{param_prefix}[contact_email]", '', :id => 'contact_email'  %>
+  <%= email_field_tag "#{param_prefix}[contact_email]", payment_source_params.try(:[], :contact_email), :id => 'contact_email'  %>
 </p>
 <p>
   <%= label_tag nil, Spree.t(:upload_pdf) %><br />
