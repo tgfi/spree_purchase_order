@@ -5,7 +5,7 @@ if payment_source_params.present?
   payment_source_params = payment_source_params.detect { |p| p[:payment_method_id].to_i == payment_method.id }.try(:[], :source_attributes)
 end
 %>
-<h1>Purchase Order</h1>
+<h1>Purchase Order - For School Use Only</h1>
 <p>
   <%= label_tag nil, Spree.t(:are_you_tax_exempt) %><span class="required">*</span><br />
   <label style="margin-right: 1em;"><%= radio_button_tag "#{param_prefix}[tax_exempt]", 1, ![false, 0, "false", "0",nil].include?(payment_source_params.try(:[], :tax_exempt)), value: true %> Yes</label>
